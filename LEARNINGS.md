@@ -20,3 +20,8 @@ Dated notes from real use. Newest first. Each one should also be reflected in SK
   probe confirms before resuming.
 - **2026-11-13** — Gemini 3.8 Flash handled two exact one-line JSX edits correctly in one
   run; fine for fully specified edits.
+- **2026-11-18** — A Flash run on a 3-file brief finished the first file in about a minute,
+  then sat for over 10 minutes with no output and no further edits until it was stopped.
+  A second Flash run (2 JSON files) wrapped in `timeout 240` finished normally. Always run
+  headless agy under `timeout`, and when one file's diff lands but the rest don't move,
+  review what landed and finish the rest yourself.

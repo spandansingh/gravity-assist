@@ -26,7 +26,7 @@ judgment call or git, and reviews every diff before anything is committed.
 
 ```bash
 cd <repo or worktree>
-~/.local/bin/agy -p "<brief>" --model gemini-4-hydrogen-high \
+timeout 600 ~/.local/bin/agy -p "<brief>" --model gemini-4-hydrogen-high \
   --mode accept-edits --print-timeout 0 2>&1 | grep -v "logging before"
 ```
 
@@ -62,6 +62,7 @@ should be gone (the old name, the old class) and read the whole diff.
 | Plan-mode lookups refuse: "no grep_search / find_by_name tools" | Headless agy has no codebase search tool | Do read-only research yourself with rg/grep; it is faster |
 | `Waiting for authentication… authentication timed out` mid-sweep | Usually the account ran out of AI credits, not a sign-in problem | Run `agy` interactively once: the status bar shows `AI: Out of credits`. Fall back to a Claude subagent (Sonnet) for the rest; re-test later with `agy -p "Reply with exactly: OK" --model <id> --mode plan` |
 | One batch in a queue exits 1, others 0 | Same credit or auth cut-off mid-run | Re-run that batch's remaining files; the guard/check output gives the list |
+| Run stops making progress after the first file and never exits | Hang mid-run, not an auth prompt (no message printed) | Wrap every run in `timeout <s>`; review the files that landed and finish the rest yourself |
 | Edits land but inline comments sit in odd JSX spots (`/* color-allow */` after an attribute) | Literal reading of the brief | Valid JSX; accept, or say where comments go in the brief |
 
 ## Common mistakes
