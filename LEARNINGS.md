@@ -25,3 +25,4 @@ Dated notes from real use. Newest first. Each one should also be reflected in SK
   A second Flash run (2 JSON files) wrapped in `timeout 240` finished normally. Always run
   headless agy under `timeout`, and when one file's diff lands but the rest don't move,
   review what landed and finish the rest yourself.
+- 2026-11-21: Flash (`gemini-3.8-flash-medium`) applied a 4-file exact-edit brief correctly but printed nothing (exit 0), not even the requested report lines. Don't treat empty output as failure; read the diff.
