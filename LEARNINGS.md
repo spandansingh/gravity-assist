@@ -26,3 +26,4 @@ Dated notes from real use. Newest first. Each one should also be reflected in SK
   headless agy under `timeout`, and when one file's diff lands but the rest don't move,
   review what landed and finish the rest yourself.
 - 2026-11-21: Flash (`gemini-3.8-flash-medium`) applied a 4-file exact-edit brief correctly but printed nothing (exit 0), not even the requested report lines. Don't treat empty output as failure; read the diff.
+- 2026-11-21: Hydrogen (`gemini-4-hydrogen-high`) printed the requested report lines with each path wrapped as a markdown link to an absolute `file://` URL (`[path](file:///…) — done`). Match on `— done` rather than a line starting with the path. Flash printed plain paths. Six briefs across both models (1–8 files, exact before/after blocks) all landed exactly as written.
